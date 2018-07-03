@@ -1,7 +1,7 @@
 package com.sicaudragon.joinmore.util.web;
 
 
-import com.sicaudragon.joinmore.contants.ResultEnum;
+import com.sicaudragon.joinmore.constants.ResultEnum;
 import com.sicaudragon.joinmore.pojo.VO.ResultVO;
 
 /**

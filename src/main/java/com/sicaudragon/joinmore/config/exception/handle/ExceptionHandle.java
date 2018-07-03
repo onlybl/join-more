@@ -1,7 +1,7 @@
 package com.sicaudragon.joinmore.config.exception.handle;
 
 import com.sicaudragon.joinmore.config.exception.CommonException;
-import com.sicaudragon.joinmore.contants.ResultEnum;
+import com.sicaudragon.joinmore.constants.ResultEnum;
 import com.sicaudragon.joinmore.pojo.VO.ResultVO;
 import com.sicaudragon.joinmore.util.web.ResultVOUtil;
 import lombok.extern.slf4j.Slf4j;

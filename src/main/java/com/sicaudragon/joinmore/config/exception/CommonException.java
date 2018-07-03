@@ -1,6 +1,6 @@
 package com.sicaudragon.joinmore.config.exception;
 
-import com.sicaudragon.joinmore.contants.ResultEnum;
+import com.sicaudragon.joinmore.constants.ResultEnum;
 import lombok.Getter;
 
 /**

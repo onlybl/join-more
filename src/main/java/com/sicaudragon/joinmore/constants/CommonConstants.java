@@ -1,4 +1,4 @@
-package com.sicaudragon.joinmore.contants;
+package com.sicaudragon.joinmore.constants;
 
 /**
  * 通用常量类
