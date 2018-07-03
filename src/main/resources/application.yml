@@ -1,0 +1,25 @@
+server:
+  context-path: /join-more
+  session:
+    timeout: 604800
+
+spring:
+  datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      druid:
+        initial-size: 5
+        max-active: 20
+        min-idle: 5
+        #º‡øÿ ”Õº≈‰÷√
+        stat-view-servlet:
+          login-username: admin
+          login-password: 123456
+      username: root
+      password: 123456
+      url: jdbc:mysql://localhost:3306/join_more?characterEncoding=UTF-8&useSSL=false
+
+mybatis:
+   mapperLocations: classpath:/mapper/*.xml
+   type-aliases-package: com.sicaudragon.joinmore.pojo.*
+   configuration:
+     map-underscore-to-camel-case: true

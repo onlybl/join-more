@@ -1,0 +1,25 @@
+package com.sicaudragon.joinmore.config.exception;
+
+import com.sicaudragon.joinmore.contants.ResultEnum;
+import lombok.Getter;
+
+/**
+ * 通用异常
+ * @author BeFondOfTaro
+ * Created at 13:56 2018/3/14
+ */
+@Getter
+public class CommonException extends RuntimeException{
+
+    private Integer code;
+
+    public CommonException(ResultEnum resultEnum){
+        super(resultEnum.getMessage());
+        this.code = resultEnum.getCode();
+    }
+
+    public CommonException(Integer code, String message){
+        super(message);
+        this.code = code;
+    }
+}
