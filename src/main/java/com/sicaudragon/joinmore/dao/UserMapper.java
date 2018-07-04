@@ -10,4 +10,6 @@ public interface UserMapper {
 
     int delectUserById(@Param("userId") String userId);
 
+    User selectUser(@Param("username") String username,@Param("password") String password);
+
 }

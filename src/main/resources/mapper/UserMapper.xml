@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sicaudragon.joinmore.dao.UserMapper">
-
+    <resultMap id="UserResultMap" type="com.sicaudragon.joinmore.pojo.DO.User">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="real_name" property="realName"/>
+        <result column="email" property="email"/>
+        <result column="phone" property="phone"/>
+        <result column="address" property="address"/>
+        <result column="locked" property="locked"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="lastTime" property="lastTime"/>
+    </resultMap>
+    <sql id="selectUser">
+      SELECT *
+      FROM user
+    </sql>
     <insert id="insert">
 
     </insert>
@@ -12,5 +28,10 @@
 
     <select id="selectUserById" resultType="com.sicaudragon.joinmore.pojo.DO.User">
 
+    </select>
+    
+    <select id="selectUser" resultMap="UserResultMap">
+      <include refid="selectUser"/>
+      WHERE username = #{username} AND password = #{password}
     </select>
 </mapper>

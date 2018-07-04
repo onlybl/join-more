@@ -1,19 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html><!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>我的收藏</title>
     <link rel="stylesheet" href="./assets/layui/css/layui.css">
+    <style type="text/css">
+        .main{
+            margin: 0 150px 0 150px;
+        }
+    </style>
 </head>
 <body class="layui-layout-body">
 
@@ -23,17 +19,7 @@
         <div class="layui-logo">拼多多</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-right">
-            <li class="layui-nav-item">
-                <a href="javascript:;">
-                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                    贤心
-                </a>
-                <dl class="layui-nav-child">
-                    <dd><a href="">基本资料</a></dd>
-                    <dd><a href="">安全设置</a></dd>
-                </dl>
-            </li>
-            <li class="layui-nav-item"><a href="">退了</a></li>
+            <li class="layui-nav-item"><button class="layui-btn layui-btn-sm" style="padding: 0 10px;line-height: 0;height: 28px" onclick="logout()">注销</button></li>
         </ul>
     </div>
 
@@ -41,6 +27,9 @@
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">首页</a>
+                </li>
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">我的收藏</a>
                 </li>
@@ -55,14 +44,18 @@
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <div class="layui-tab layui-tab-card">
+        <div class="layui-tab layui-tab-card" style="height: 100%; margin: 0;">
             <ul class="layui-tab-title">
                 <li class="layui-this">收藏的商品</li>
                 <li>关注的店铺</li>
             </ul>
-            <div class="layui-tab-content" style="height: 100px;">
-                <div class="layui-tab-item layui-show">默认宽度是相对于父元素100%适应的，你也可以固定宽度。</div>
-                <div class="layui-tab-item">2</div>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show" style="height: 100%">
+                    <div class="main">
+                    <table class="layui-hide" id="collectionProduct"></table>
+                    </div>
+                </div>
+                <div class="layui-tab-item">店铺</div>
             </div>
         </div>
     </div>
@@ -82,7 +75,14 @@
 
     });
 </script>
+<script type="text/html" id="cancel">
+    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="detail" style="background-color:#ef5252;line-height: 28px;height:25px;border-radius: 4px">取消</a>
+</script>
 <script>
+    //伪注销登录
+    function logout() {
+        window.location.href = "login.html";
+    }
     layui.use('element', function(){
         var $ = layui.jquery
             ,element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
@@ -107,6 +107,32 @@
             location.hash = 'test='+ $(this).attr('lay-id');
         });
 
+    });
+
+//--------------------------收藏商品信息表-----------------------------
+
+    var server = 'http://localhost:8080/join-more/';
+    layui.use('table', function(){
+        var table = layui.table;
+
+        table.render({
+            elem: '#collectionProduct'
+            ,url: server + 'product/'
+            ,cellMinWidth: 120 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+            ,page: true
+            ,cols: [[
+                {field:'id', width:80, title: 'ID', sort: true}
+                ,{width:80, title: '店铺'}
+                ,{field:'name', width:80, title: '名称', sort: true}
+                ,{field:'price', width:80, title: '价格', sort:true}
+                ,{field:'stock', title: '库存', width:80, sort: true} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                ,{field:'status', title: '状态', width:80, sort: true}
+                ,{field:'categoryType', title: '类别', width:80, sort: true}
+                ,{field:'updateTime', width:137, title: '更新时间', sort: true}
+                ,{field:'description', title: '描述', width: 450, sort: true}
+                ,{title: '操作', fixed: 'right', width:150, align:'center', toolbar: '#cancel'} //这里的toolbar值是模板元素的选择器
+            ]]
+        });
     });
 </script>
 </body>
