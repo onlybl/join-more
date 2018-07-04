@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+    <link rel="stylesheet" type="text/css" href="css/style3.css" tppabs="css/style.css" />
+    <style>
+        body{height:100%;background:#16a085;overflow:hidden;}
+        canvas{z-index:-1;position:absolute;}
+    </style>
+    <script src="js/jquery.js"></script>
+    <script src="js/verificationNumbers.js" tppabs="js/verificationNumbers.js"></script>
+    <script src="js/Particleground.js" tppabs="js/Particleground.js"></script>
+    <script>
+        $(document).ready(function() {
+            //粒子背景特效
+            $('body').particleground({
+                dotColor: '#5cbdaa',
+                lineColor: '#5cbdaa'
+            });
+            //验证码
+            createCode();
+            //测试提交，对接程序删除即可
+            $(".submit_btn").click(function(){
+                location.href="javascrpt:;"/*tpa=http://***index.html*/;
+            });
+        });
+    </script>
+</head>
+<body>
+<dl class="admin_login" style="width:400px; border:1px solid #19a97b;">
+    <dt>
+        <strong>拼多多</strong>
+        <em>Join More</em>
+    </dt>
+    <form>
+        <dd class="user_icon" style="margin-top:20px;">
+            <input type="text" placeholder="用户名" class="login_txtbx" name="username"/>
+        </dd>
+        <dd class="pwd_icon" style="margin-top:20px;">
+            <input type="password" placeholder="密码" class="login_txtbx" name="password"/>
+        </dd>
+        <dd style="margin-top:20px;">
+            <input type="button" value="立即登陆" class="submit_btn" onclick="login()"/>
+        </dd>
+    </form>
+    <dd style="margin-top:20px;">
+        <p>© Sicau Dragon 版权所有</p>
+    </dd>
+</dl>
+
+
+<script>
+    function login() {
+        $.ajax({
+
+        })
+    }
+</script>
+</body>
+</html>
