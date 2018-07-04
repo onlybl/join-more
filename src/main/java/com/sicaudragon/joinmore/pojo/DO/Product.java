@@ -1,5 +1,7 @@
 package com.sicaudragon.joinmore.pojo.DO;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.sicaudragon.joinmore.util.serializer.Date2LongSerializer;
 import lombok.Data;
 
 import java.util.Date;
@@ -25,7 +27,9 @@ public class Product {
     /** 商品类别id .*/
     private String categoryTypeId;
     /**创建时间 .*/
+    @JsonSerialize(using = Date2LongSerializer.class)
     private Date createTime;
     /**更新时间 .*/
+    @JsonSerialize(using = Date2LongSerializer.class)
     private Date updateTime;
 }

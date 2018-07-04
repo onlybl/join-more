@@ -15,8 +15,8 @@ spring:
           login-username: admin
           login-password: 123456
       username: root
-      password: 606868
-      url: jdbc:mysql://localhost:3306/join_more?characterEncoding=UTF-8&useSSL=false
+      password: 123456
+      url: jdbc:mysql://39.108.97.103:3306/join_more?characterEncoding=UTF-8&useSSL=false
 
 mybatis:
    mapperLocations: classpath:/mapper/*.xml

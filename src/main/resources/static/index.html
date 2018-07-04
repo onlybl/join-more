@@ -10,8 +10,12 @@
             margin: 0 150px 0 150px;
         }
         .item{
-            height: 250px;
-            background-color: #00F7DE;
+            height: 300px;
+            text-align: center;
+        }
+        .item-img{
+            width: 80%;
+            height: 80%;
         }
     </style>
 </head>
@@ -57,16 +61,36 @@
         <!-- 内容主体区域 -->
         <div class="layui-row layui-col-space30" id="main">
             <div class="layui-col-md3">
-                <div class="grid-demo grid-demo-bg1 item" style="">1/4</div>
+                <div class="grid-demo grid-demo-bg1 item">
+                    <img class="item-img" src="assets/img/watch.jpg">
+                    <div>价格：</div>
+                    <div>名称：</div>
+                    <div><button>收藏</button></div>
+                </div>
             </div>
             <div class="layui-col-md3">
-                <div class="grid-demo item">1/4</div>
+                <div class="grid-demo grid-demo-bg1 item">
+                    <img class="item-img" src="assets/img/watch.jpg">
+                    <div>价格：</div>
+                    <div>名称：</div>
+                    <div><button>收藏</button></div>
+                </div>
             </div>
             <div class="layui-col-md3">
-                <div class="grid-demo grid-demo-bg1 item">1/4</div>
+                <div class="grid-demo grid-demo-bg1 item">
+                    <img class="item-img" src="assets/img/watch.jpg">
+                    <div>价格：</div>
+                    <div>名称：</div>
+                    <div><button>收藏</button></div>
+                </div>
             </div>
             <div class="layui-col-md3">
-                <div class="grid-demo item">1/4</div>
+                <div class="grid-demo grid-demo-bg1 item">
+                    <img class="item-img" src="assets/img/watch.jpg">
+                    <div>价格：</div>
+                    <div>名称：</div>
+                    <div><button>收藏</button></div>
+                </div>
             </div>
         </div>
     </div>
@@ -79,12 +103,11 @@
 <script src="./assets/layui/layui.js"></script>
 <script>
     //一般直接写在一个js文件中
-    layui.use(['layer', 'form','carousel'], function(){
-        var layer = layui.layer
-            ,form = layui.form
-            ,carousel = layui.carousel;
+    layui.use(['laytpl'], function(){
+        var laytpl = layui.laytpl;
 
     });
+
 </script>
 </body>
 </html>
