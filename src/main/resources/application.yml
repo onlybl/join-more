@@ -10,7 +10,7 @@ spring:
         initial-size: 5
         max-active: 20
         min-idle: 5
-        #¼à¿ØÊÓÍ¼ÅäÖÃ
+        #ç›‘æ§è§†å›¾
         stat-view-servlet:
           login-username: admin
           login-password: 123456

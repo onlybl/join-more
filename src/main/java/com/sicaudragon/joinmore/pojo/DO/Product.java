@@ -22,8 +22,8 @@ public class Product {
     private String icon;
     /** 商品状态 .*/
     private String status;
-    /** 商品类别 .*/
-    private String categoryType;
+    /** 商品类别id .*/
+    private String categoryTypeId;
     /**创建时间 .*/
     private Date createTime;
     /**更新时间 .*/
