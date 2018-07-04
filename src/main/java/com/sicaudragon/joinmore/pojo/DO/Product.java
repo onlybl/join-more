@@ -1,4 +1,4 @@
-package com.sicaudragon.joinmore.pojo.VO.DO;
+package com.sicaudragon.joinmore.pojo.DO;
 
 import lombok.Data;
 

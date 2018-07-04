@@ -1,6 +1,6 @@
 package com.sicaudragon.joinmore.dao;
 
-import com.sicaudragon.joinmore.pojo.VO.DO.ProductCollection;
+import com.sicaudragon.joinmore.pojo.DO.ProductCollection;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
