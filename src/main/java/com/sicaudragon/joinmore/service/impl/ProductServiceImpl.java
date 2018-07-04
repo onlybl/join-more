@@ -1,5 +1,7 @@
 package com.sicaudragon.joinmore.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sicaudragon.joinmore.dao.ProductMapper;
 import com.sicaudragon.joinmore.pojo.DO.Product;
 import com.sicaudragon.joinmore.service.ProductService;
@@ -21,5 +23,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> listProduct() {
         return productMapper.list();
+    }
+
+    @Override
+    public PageInfo<Product> listProductByPage(int page, int limit) {
+        PageHelper.startPage(page, limit);
+        return new PageInfo<>(listProduct());
     }
 }

@@ -6,7 +6,7 @@
     <title>拼多多</title>
     <link rel="stylesheet" href="./assets/layui/css/layui.css">
     <style type="text/css">
-        #main{
+        .product-row{
             margin: 0 150px 0 150px;
         }
         .item{
@@ -59,40 +59,7 @@
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <div class="layui-row layui-col-space30" id="main">
-            <div class="layui-col-md3">
-                <div class="grid-demo grid-demo-bg1 item">
-                    <img class="item-img" src="assets/img/watch.jpg">
-                    <div>价格：</div>
-                    <div>名称：</div>
-                    <div><button>收藏</button></div>
-                </div>
-            </div>
-            <div class="layui-col-md3">
-                <div class="grid-demo grid-demo-bg1 item">
-                    <img class="item-img" src="assets/img/watch.jpg">
-                    <div>价格：</div>
-                    <div>名称：</div>
-                    <div><button>收藏</button></div>
-                </div>
-            </div>
-            <div class="layui-col-md3">
-                <div class="grid-demo grid-demo-bg1 item">
-                    <img class="item-img" src="assets/img/watch.jpg">
-                    <div>价格：</div>
-                    <div>名称：</div>
-                    <div><button>收藏</button></div>
-                </div>
-            </div>
-            <div class="layui-col-md3">
-                <div class="grid-demo grid-demo-bg1 item">
-                    <img class="item-img" src="assets/img/watch.jpg">
-                    <div>价格：</div>
-                    <div>名称：</div>
-                    <div><button>收藏</button></div>
-                </div>
-            </div>
-        </div>
+        <table class="layui-hide" id="products"></table>
     </div>
 
     <div class="layui-footer">
@@ -101,12 +68,36 @@
     </div>
 </div>
 <script src="./assets/layui/layui.js"></script>
-<script src="js"
-<script>
-    //一般直接写在一个js文件中
-    layui.use(['laytpl'], function(){
-        var laytpl = layui.laytpl;
+<script src="./assets/js/jquery.js"></script>
 
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="detail">收藏</a>
+</script>
+
+<script>
+    var server = 'http://localhost:8080/join-more/';
+    //一般直接写在一个js文件中
+    layui.use('table', function(){
+        var table = layui.table;
+
+        table.render({
+            elem: '#products'
+            ,url: server + 'product/'
+            ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+            ,page: true
+            ,cols: [[
+                {field:'id', width:80, title: 'ID', sort: true}
+                ,{field:'shopId', width:80, title: '店铺'}
+                ,{field:'name', width:80, title: '名称', sort: true}
+                ,{field:'price', width:80, title: '价格', sort:true}
+                ,{field:'stock', title: '库存', width:80, sort: true} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                ,{field:'description', title: '描述', width: 150, sort: true}
+                ,{field:'status', title: '状态', width:80, sort: true}
+                ,{field:'categoryTypeId', title: '类别', width:80, sort: true}
+                ,{field:'updateTime', width:137, title: '更新时间', sort: true}
+                ,{title: '操作', fixed: 'right', width:150, align:'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
+            ]]
+        });
     });
 
 </script>
