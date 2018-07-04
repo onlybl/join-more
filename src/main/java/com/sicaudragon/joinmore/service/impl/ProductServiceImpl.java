@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sicaudragon.joinmore.dao.ProductMapper;
 import com.sicaudragon.joinmore.pojo.DO.Product;
+import com.sicaudragon.joinmore.pojo.DTO.ProductDTO;
 import com.sicaudragon.joinmore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,12 +22,12 @@ public class ProductServiceImpl implements ProductService {
     private ProductMapper productMapper;
 
     @Override
-    public List<Product> listProduct() {
+    public List<ProductDTO> listProduct() {
         return productMapper.list();
     }
 
     @Override
-    public PageInfo<Product> listProductByPage(int page, int limit) {
+    public PageInfo<ProductDTO> listProductByPage(int page, int limit) {
         PageHelper.startPage(page, limit);
         return new PageInfo<>(listProduct());
     }

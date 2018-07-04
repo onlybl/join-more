@@ -2,6 +2,7 @@ package com.sicaudragon.joinmore.service;
 
 import com.github.pagehelper.PageInfo;
 import com.sicaudragon.joinmore.pojo.DO.Product;
+import com.sicaudragon.joinmore.pojo.DTO.ProductDTO;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ public interface ProductService {
      * 查询所有商品
      * @return
      */
-    List<Product> listProduct();
+    List<ProductDTO> listProduct();
 
     /**
      * 分页查询所有商品
@@ -24,5 +25,5 @@ public interface ProductService {
      * @param limit 数量
      * @return
      */
-    PageInfo<Product> listProductByPage(int page, int limit);
+    PageInfo<ProductDTO> listProductByPage(int page, int limit);
 }

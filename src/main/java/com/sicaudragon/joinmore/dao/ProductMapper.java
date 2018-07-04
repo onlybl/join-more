@@ -1,6 +1,7 @@
 package com.sicaudragon.joinmore.dao;
 
 import com.sicaudragon.joinmore.pojo.DO.Product;
+import com.sicaudragon.joinmore.pojo.DTO.ProductDTO;
 
 import java.util.List;
 
@@ -15,5 +16,5 @@ public interface ProductMapper {
      * 查询所有商品
      * @return
      */
-    List<Product> list();
+    List<ProductDTO> list();
 }

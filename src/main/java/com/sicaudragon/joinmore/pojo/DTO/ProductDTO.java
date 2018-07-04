@@ -1,18 +1,24 @@
-package com.sicaudragon.joinmore.pojo.DO;
+package com.sicaudragon.joinmore.pojo.DTO;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.sicaudragon.joinmore.pojo.DO.CategoryType;
+import com.sicaudragon.joinmore.pojo.DO.Shop;
 import com.sicaudragon.joinmore.util.serializer.Date2LongSerializer;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+ * @author BeFondOfTaro
+ * Created at 15:39 2018/7/4
+ */
 @Data
-public class Product {
+public class ProductDTO {
     /** 商品id .*/
     private String id;
     /** 所属店铺id .*/
-    private String shopId;
+    private Shop shop;
     /** 商品名称 .*/
     private String name;
     /** 商品价格 .*/
@@ -25,8 +31,8 @@ public class Product {
     private String icon;
     /** 商品状态 .*/
     private Integer status;
-    /** 商品类别id .*/
-    private String categoryTypeId;
+    /** 商品类别 .*/
+    private String categoryType;
     /**创建时间 .*/
     @JsonSerialize(using = Date2LongSerializer.class)
     private Date createTime;
