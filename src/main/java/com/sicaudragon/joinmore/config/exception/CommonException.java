@@ -3,6 +3,7 @@ package com.sicaudragon.joinmore.config.exception;
 import com.sicaudragon.joinmore.constants.ResultEnum;
 import lombok.Getter;
 
+
 /**
  * 通用异常
  * @author BeFondOfTaro

@@ -9,5 +9,5 @@ public class ProductCollection {
     /** 收藏人id .*/
     private String userId;
     /** 收藏商品id .*/
-    private String id;
+    private String productId;
 }
