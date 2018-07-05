@@ -117,7 +117,7 @@
      */
     function collectProduct(obj, layer) {
         $.ajax({
-            url: server + 'collect-shop?userId=' + $.cookie('userId') + '&shopId=' + obj.id,
+            url: server + 'user/'+$.cookie('userId') + '/' + obj.id + '/insert',
             type: 'get',
             success: function (data) {
                 layer.msg('商品：'+ obj.name + ' 收藏成功');

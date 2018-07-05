@@ -46,7 +46,7 @@ public class ShopController {
      * @param shopId 店铺id
      */
     @GetMapping("cancelCollectShop")
-    public ResultVO cancelCollectShop(String userId, String shopId){
+    public ResultVO cancelCollectShop(@RequestParam String userId, @RequestParam String shopId){
         shopService.cancelCollectShop(userId, shopId);
         return ResultVOUtil.success();
     }
