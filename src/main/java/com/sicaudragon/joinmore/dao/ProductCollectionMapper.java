@@ -1,14 +1,16 @@
 package com.sicaudragon.joinmore.dao;
 
-import com.sicaudragon.joinmore.pojo.DO.Product;
-import com.sicaudragon.joinmore.pojo.DO.ProductCollection;
+
+import com.sicaudragon.joinmore.pojo.DTO.ProductDTO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface ProductCollectionMapper {
-    List<Product> selectProductByUserId(@Param("userId") String userId);
-
-    int insertProductCollection(ProductCollection productCollection);
-
+    /**
+     * 查询用户收藏商品
+     * @param userId
+     * @return
+     */
+    List<ProductDTO> selectProductByUserId(@Param("userId") String userId);
 }

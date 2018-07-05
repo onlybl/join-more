@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.sicaudragon.joinmore.dao.ProductCollectionMapper">\
+<mapper namespace="com.sicaudragon.joinmore.dao.ProductCollectionMapper">
     <resultMap id="productDTOMap" type="com.sicaudragon.joinmore.pojo.DTO.ProductDTO">
         <id column="id" property="id"/>
         <result column="name" property="name"/>
@@ -14,8 +14,18 @@
         <result column="update_time" property="updateTime"/>
         <result column="s_name" property="shopName"/>
     </resultMap>
+    <sql id="selectProductByUserId">
+        SELECT p.*,s.`name` s_name,s.`description` s_description  FROM product p
+        LEFT JOIN `shop` s
+        ON p.`shop_id` = s.`id`
+        WHERE
+        p.`id` IN(
+        SELECT id FROM product_collection pc
+        WHERE pc.`user_id` = #{userId}
+        )
+    </sql>
 
-    <select id="selectProductByUserId">
-
+    <select id="selectProductByUserId" resultMap="productDTOMap">
+    <include refid="selectProductByUserId"/>
     </select>
 </mapper>

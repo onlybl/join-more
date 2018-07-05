@@ -26,4 +26,11 @@ public interface ProductService {
      * @return
      */
     PageInfo<ProductDTO> listProductByPage(int page, int limit);
+
+    /**
+     * 查询所有用户收藏商品
+     * @param userId
+     * @return
+     */
+    List<ProductDTO> ListProductCollextion(String userId);
 }

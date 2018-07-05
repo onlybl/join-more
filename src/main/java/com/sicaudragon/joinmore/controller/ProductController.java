@@ -22,4 +22,8 @@ public class ProductController {
     public ResultVO listProduct(){
         return ResultVOUtil.success(productService.listProduct());
     }
+    @GetMapping("productCollection")
+    public ResultVO ListProductCollection(@RequestParam("userId") String userId){
+        return ResultVOUtil.success(productService.ListProductCollextion(userId));
+    }
 }
