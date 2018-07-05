@@ -38,7 +38,10 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">我的收藏</a>
+                    <a class="" href="javascript:;">首页</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">我的收藏</a>
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">优惠券</a>
@@ -50,6 +53,16 @@
     </div>
 
     <div class="layui-body">
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+            <legend>首页</legend>
+        </fieldset>
+        <div class="layui-tab">
+            <ul class="layui-tab-title">
+                <ul class="layui-tab-title">
+                    <li class="layui-this"><a href="index.html">商品列表</a></li>
+                    <li><a href="shop-list.html">店铺列表</a></li>
+                </ul>
+            </ul>
         <!-- 内容主体区域 -->
         <div class="main">
             <table class="layui-hide" id="products"></table>
@@ -61,6 +74,7 @@
         © layui.com - 底部固定区域
     </div>
 </div>
+</div>
 <script src="./assets/layui/layui.js"></script>
 <script src="./assets/js/jquery.js"></script>
 
@@ -71,9 +85,10 @@
 <script>
     var server = 'http://localhost:8080/join-more/';
     //一般直接写在一个js文件中
-    layui.use('table', function(){
-        var table = layui.table;
-
+    /**
+     * 渲染商品
+     */
+    function rendProduct(table) {
         table.render({
             elem: '#products'
             ,url: server + 'product/'
@@ -92,7 +107,52 @@
                 ,{title: '操作', fixed: 'right', width:150, align:'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
             ]]
         });
+    }
+
+    //渲染店铺
+    function rendShop(table) {
+        table.render({
+            elem: '#products'
+            ,url: server + 'shop'
+            ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+            ,page: true
+            ,cols: [[
+                {field:'id', width:80, title: 'ID', sort: true}
+                ,{width:80, title: '店铺'}
+                ,{field:'name', width:80, title: '名称', sort: true}
+                ,{field:'price', width:80, title: '价格', sort:true}
+                ,{field:'stock', title: '库存', width:80, sort: true} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                ,{field:'status', title: '状态', width:80, sort: true}
+                ,{field:'categoryType', title: '类别', width:80, sort: true}
+                ,{field:'updateTime', width:137, title: '更新时间', sort: true}
+                ,{field:'description', title: '描述', width: 450, sort: true}
+                ,{title: '操作', fixed: 'right', width:150, align:'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
+            ]]
+        });
+    }
+
+    /**
+     * 点击导航事件
+     * @param elem 当前导航元素
+     */
+    function clickTab(elem) {
+        var id = elem.getAttribute('id');
+        elem.removeAttribute('class');
+        $('shop-tab').attr('class','layui-this');
+        if ('product-tab' === id){
+            rendProduct();
+        }
+        else {
+            rendShop(table);
+        }
+    }
+
+    layui.use('table', function(){
+        var table = layui.table;
+
+        rendProduct(table);
     });
+
 
 </script>
 </body>
