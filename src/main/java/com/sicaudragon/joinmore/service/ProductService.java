@@ -32,5 +32,12 @@ public interface ProductService {
      * @param userId
      * @return
      */
-    List<ProductDTO> ListProductCollextion(String userId);
+    List<ProductDTO> listProductCollextion(String userId);
+
+    /**
+     * 取消商品收藏
+     * @param userId
+     * @param productId
+     */
+    void deleteProductCollection(String userId, String productId);
 }

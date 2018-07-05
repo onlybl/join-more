@@ -35,7 +35,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductDTO> ListProductCollextion(String userId) {
+    public List<ProductDTO> listProductCollextion(String userId) {
         return productCollectionMapper.selectProductByUserId(userId);
+    }
+
+    @Override
+    public void deleteProductCollection(String userId, String productId) {
+        productCollectionMapper.delectProductCollection(userId,productId);
     }
 }

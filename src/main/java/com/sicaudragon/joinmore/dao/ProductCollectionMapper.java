@@ -13,4 +13,5 @@ public interface ProductCollectionMapper {
      * @return
      */
     List<ProductDTO> selectProductByUserId(@Param("userId") String userId);
+    void delectProductCollection(@Param("userId") String userId,@Param("productId") String productId);
 }

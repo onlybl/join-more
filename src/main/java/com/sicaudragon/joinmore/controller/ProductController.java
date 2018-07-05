@@ -5,6 +5,7 @@ import com.sicaudragon.joinmore.service.ProductService;
 import com.sicaudragon.joinmore.util.web.ResultVOUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,8 +23,16 @@ public class ProductController {
     public ResultVO listProduct(){
         return ResultVOUtil.success(productService.listProduct());
     }
+
     @GetMapping("productCollection")
     public ResultVO ListProductCollection(@RequestParam("userId") String userId){
         return ResultVOUtil.success(productService.ListProductCollextion(userId));
+    }
+
+    @GetMapping("user/{userId}/{productId}/delete")
+    public ResultVO deleteProductCollection(@PathVariable String userId,
+                                            @PathVariable String productId){
+        productService.deleteProductCollection(userId,productId);
+        return ResultVOUtil.success();
     }
 }

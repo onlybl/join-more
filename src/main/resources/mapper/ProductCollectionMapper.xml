@@ -24,6 +24,13 @@
         WHERE pc.`user_id` = #{userId}
         )
     </sql>
+    <sql id="delectProductCollection">
+        DELETE FROM product_collection
+        WHERE user_id = #{userId} AND product_id = #{productId}
+    </sql>
+    <delete id="delectProductCollection">
+    <include refid="delectProductCollection"/>
+    </delete>
 
     <select id="selectProductByUserId" resultMap="productDTOMap">
     <include refid="selectProductByUserId"/>
