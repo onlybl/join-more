@@ -33,7 +33,7 @@
         <strong>拼多多</strong>
         <em>Join More</em>
     </dt>
-    <form>
+    <form id="login">
         <dd class="user_icon" style="margin-top:20px;">
             <input type="text" placeholder="用户名" class="login_txtbx" name="username"/>
         </dd>
@@ -49,13 +49,20 @@
     </dd>
 </dl>
 
-
 <script>
+    var server = 'http://localhost:8080/join-more/';
+
     function login() {
         $.ajax({
-
+            type:'post',
+            data:$("#login").serialize(),
+            url:server+"log",
+            success:function (data) {
+                window.location.href = "index.html";
+            }
         })
     }
 </script>
+
 </body>
 </html>
