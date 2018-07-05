@@ -1,7 +1,10 @@
 package com.sicaudragon.joinmore.controller;
 
+import com.sicaudragon.joinmore.pojo.DO.Product;
+import com.sicaudragon.joinmore.pojo.DO.ProductCollection;
 import com.sicaudragon.joinmore.pojo.VO.ResultVO;
 import com.sicaudragon.joinmore.service.ProductService;
+import com.sicaudragon.joinmore.util.KeyUtil;
 import com.sicaudragon.joinmore.util.web.ResultVOUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,8 +28,8 @@ public class ProductController {
     }
 
     @GetMapping("productCollection")
-    public ResultVO ListProductCollection(@RequestParam("userId") String userId){
-        return ResultVOUtil.success(productService.ListProductCollextion(userId));
+    public ResultVO listProductCollection(@RequestParam("userId") String userId){
+        return ResultVOUtil.success(productService.listProductCollextion(userId));
     }
 
     @GetMapping("user/{userId}/{productId}/delete")
@@ -34,5 +37,14 @@ public class ProductController {
                                             @PathVariable String productId){
         productService.deleteProductCollection(userId,productId);
         return ResultVOUtil.success();
+    }
+    @GetMapping("user/{userId}/{productId}/insert")
+    public ResultVO insertProductCollection(@PathVariable("userId") String userId
+                                            ,@PathVariable("productId") String productId){
+        ProductCollection productCollection = new ProductCollection();
+        productCollection.setUserId(userId);
+        productCollection.setProductId(productId);
+        productCollection.setId(KeyUtil.genUniqueKey());
+        return ResultVOUtil.success(productService.insertProductCollection(productCollection));
     }
 }

@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.sicaudragon.joinmore.dao.ProductCollectionMapper;
 import com.sicaudragon.joinmore.dao.ProductMapper;
 import com.sicaudragon.joinmore.pojo.DO.Product;
+import com.sicaudragon.joinmore.pojo.DO.ProductCollection;
 import com.sicaudragon.joinmore.pojo.DTO.ProductDTO;
 import com.sicaudragon.joinmore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,5 +43,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void deleteProductCollection(String userId, String productId) {
         productCollectionMapper.delectProductCollection(userId,productId);
+    }
+
+    @Override
+    public int insertProductCollection(ProductCollection productCollection) {
+        return productCollectionMapper.insertProductCollection(productCollection);
     }
 }

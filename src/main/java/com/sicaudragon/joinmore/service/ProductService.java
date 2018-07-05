@@ -2,6 +2,7 @@ package com.sicaudragon.joinmore.service;
 
 import com.github.pagehelper.PageInfo;
 import com.sicaudragon.joinmore.pojo.DO.Product;
+import com.sicaudragon.joinmore.pojo.DO.ProductCollection;
 import com.sicaudragon.joinmore.pojo.DTO.ProductDTO;
 
 import java.util.List;
@@ -40,4 +41,11 @@ public interface ProductService {
      * @param productId
      */
     void deleteProductCollection(String userId, String productId);
+
+    /**
+     * 新增一条商品收藏
+     * @param productCollection
+     * @return
+     */
+    int insertProductCollection(ProductCollection productCollection);
 }

@@ -28,6 +28,11 @@
         DELETE FROM product_collection
         WHERE user_id = #{userId} AND product_id = #{productId}
     </sql>
+    <insert id="insertProductCollection">
+        INSERT INTO product_collection
+        VALUES (#{id},#{userId},#{productId})
+    </insert>
+
     <delete id="delectProductCollection">
     <include refid="delectProductCollection"/>
     </delete>
