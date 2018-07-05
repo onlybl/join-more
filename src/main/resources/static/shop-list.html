@@ -20,7 +20,7 @@
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
-                <a href="javascript:;">
+                <a href="javascript:;" id="user">
                     <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
                     贤心
                 </a>
@@ -76,14 +76,13 @@
 <script src="./assets/layui/layui.js"></script>
 <script src="./assets/js/jquery.js"></script>
 <script src="assets/js/jquery.cookie.js"></script>
+<script src="assets/js/common.js"></script>
 
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-xs" lay-event="detail">收藏</a>
 </script>
 
 <script>
-    var server = 'http://localhost:8080/join-more/';
-    //一般直接写在一个js文件中
     //渲染店铺
     function rendShop(table) {
         table.render({
@@ -128,7 +127,6 @@
             }
         });
     });
-
 
 </script>
 </body>
