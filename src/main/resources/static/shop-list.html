@@ -63,7 +63,7 @@
             </ul>
         <!-- 内容主体区域 -->
         <div class="main">
-            <table class="layui-hide" id="products"></table>
+            <table class="layui-hide" id="products" lay-filter="main"></table>
         </div>
     </div>
 
@@ -75,6 +75,7 @@
 </div>
 <script src="./assets/layui/layui.js"></script>
 <script src="./assets/js/jquery.js"></script>
+<script src="assets/js/jquery.cookie.js"></script>
 
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-xs" lay-event="detail">收藏</a>
@@ -100,10 +101,32 @@
         });
     }
 
+    /**
+     * 收藏店铺
+     * @param obj
+     * @param layer
+     */
+    function collectShop(obj, layer) {
+        $.ajax({
+            url: server + 'collect-shop?userId=' + $.cookie('userId') + '&shopId=' + obj.id,
+            type: 'get',
+            success: function (data) {
+                layer.msg('店铺：'+ obj.name + ' 收藏成功');
+            }
+        });
+    }
+
     layui.use('table', function(){
         var table = layui.table;
 
         rendShop(table);
+        //监听工具条
+        table.on('tool(main)', function(obj){
+            var data = obj.data;
+            if(obj.event === 'detail'){
+                collectShop(data,layer);
+            }
+        });
     });
 
 

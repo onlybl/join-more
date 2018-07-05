@@ -65,7 +65,7 @@
             </ul>
         <!-- 内容主体区域 -->
         <div class="main">
-            <table class="layui-hide" id="products"></table>
+            <table class="layui-hide" id="products" lay-filter="main"></table>
         </div>
         </div>
 
@@ -77,6 +77,7 @@
 </div>
 <script src="./assets/layui/layui.js"></script>
 <script src="./assets/js/jquery.js"></script>
+<script src="assets/js/jquery.cookie.js"></script>
 
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-xs" lay-event="detail">收藏</a>
@@ -109,48 +110,33 @@
         });
     }
 
-    //渲染店铺
-    function rendShop(table) {
-        table.render({
-            elem: '#products'
-            ,url: server + 'shop'
-            ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
-            ,page: true
-            ,cols: [[
-                {field:'id', width:80, title: 'ID', sort: true}
-                ,{width:80, title: '店铺'}
-                ,{field:'name', width:80, title: '名称', sort: true}
-                ,{field:'price', width:80, title: '价格', sort:true}
-                ,{field:'stock', title: '库存', width:80, sort: true} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
-                ,{field:'status', title: '状态', width:80, sort: true}
-                ,{field:'categoryType', title: '类别', width:80, sort: true}
-                ,{field:'updateTime', width:137, title: '更新时间', sort: true}
-                ,{field:'description', title: '描述', width: 450, sort: true}
-                ,{title: '操作', fixed: 'right', width:150, align:'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
-            ]]
-        });
-    }
-
     /**
-     * 点击导航事件
-     * @param elem 当前导航元素
+     * 收藏商品
+     * @param obj
+     * @param layer
      */
-    function clickTab(elem) {
-        var id = elem.getAttribute('id');
-        elem.removeAttribute('class');
-        $('shop-tab').attr('class','layui-this');
-        if ('product-tab' === id){
-            rendProduct();
-        }
-        else {
-            rendShop(table);
-        }
+    function collectProduct(obj, layer) {
+        $.ajax({
+            url: server + 'collect-shop?userId=' + $.cookie('userId') + '&shopId=' + obj.id,
+            type: 'get',
+            success: function (data) {
+                layer.msg('商品：'+ obj.name + ' 收藏成功');
+            }
+        });
     }
 
     layui.use('table', function(){
         var table = layui.table;
 
         rendProduct(table);
+
+        //监听工具条
+        table.on('tool(main)', function(obj){
+            var data = obj.data;
+            if(obj.event === 'detail'){
+                collectProduct(data,layer);
+            }
+        });
     });
 
 
