@@ -19,8 +19,12 @@
         <div class="layui-logo">拼多多</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-right">
-            <li id="user" style="display: block;float: left;margin-left:-60px;margin-top: 20px"></li>
-            <li class="layui-nav-item"><button class="layui-btn layui-btn-sm" style="padding: 0 10px;line-height: 0;height: 28px" onclick="logout()">注销</button></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;" id="user">
+
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="login.html">退了</a></li>
         </ul>
     </div>
 
@@ -70,12 +74,13 @@
 
     <div class="layui-footer">
         <!-- 底部固定区域 -->
-        © layui.com - 底部固定区域
+        © https://github.com/onlybl - 掉分加Q1663833096
     </div>
 </div>
 <script src="./assets/layui/layui.js"></script>
 <script src="./assets/js/jquery.js"></script>
 <script src="./assets/js/jquery.cookie.js"></script>
+<script src="assets/js/common.js"></script>
 <script>
     //一般直接写在一个js文件中
     layui.use(['layer', 'form','carousel'], function(){
@@ -86,20 +91,12 @@
     });
 </script>
 <script type="text/html" id="cancelProduct">
-    <button class="layui-btn layui-btn-xs layui-btn-danger" onclick="cancelProduct(this)" lay-event="detail" style="background-color:#ef5252;line-height: 28px;height:25px;border-radius: 4px">取消</button>
+    <button class="layui-btn layui-btn-xs layui-btn-danger" id="hahaha" onclick="cancelProduct(this)" lay-event="detail" style="background-color:#ef5252;line-height: 28px;height:25px;border-radius: 4px">取消</button>
 </script>
 <script type="text/html" id="cancelShop">
     <button class="layui-btn layui-btn-xs layui-btn-danger" onclick="cancelShop(this)" lay-event="detail" style="background-color:#ef5252;line-height: 28px;height:25px;border-radius: 4px">取消</button>
 </script>
 <script>
-    //伪注销登录
-    function logout() {
-        window.location.href = "login.html";
-    }
-    //用户名显示
-    $(function () {
-        $("#user").text($.cookie("username"));
-    });
 
     layui.use('element', function(){
         var $ = layui.jquery
@@ -129,7 +126,7 @@
 
 //--------------------------收藏商品信息表-----------------------------
 
-    var server = 'http://localhost:8080/join-more/';
+    var server = '';
     layui.use('table', function(){
         var table = layui.table;
 
@@ -199,7 +196,6 @@
             }
         })
     }
-
 </script>
 </body>
 </html>
