@@ -174,12 +174,26 @@
         });
     });
 
-    //取消商品
+    /**
+     * 取消商品
+     * @param obj
+     */
     function cancelProduct(obj) {
-        var productId = $(obj).parent().parent().parent().children(":eq(0)").text()
+        var productId = $(obj).parent().parent().parent().children(":eq(0)").text();
         $.ajax({
             type:"GET",
             url:server+"user/"+$.cookie("userId")+"/"+productId+"/delete",
+            success:function () {
+                window.location.reload();
+            }
+        })
+    }
+    //取消店铺
+    function cancelShop(obj) {
+        var shopId = $(obj).parent().parent().parent().children(":eq(0)").text();
+        $.ajax({
+            type:"GET",
+            url:server+"cancelCollectShop?userId="+$.cookie("userId")+"&shopId="+shopId,
             success:function () {
                 window.location.reload();
             }
