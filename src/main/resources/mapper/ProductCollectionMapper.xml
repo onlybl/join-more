@@ -15,14 +15,15 @@
         <result column="s_name" property="shopName"/>
     </resultMap>
     <sql id="selectProductByUserId">
-        SELECT p.*,s.`name` s_name,s.`description` s_description  FROM product p
-        LEFT JOIN `shop` s
-        ON p.`shop_id` = s.`id`
-        WHERE
-        p.`id` IN(
-        SELECT id FROM product_collection pc
-        WHERE pc.`user_id` = #{userId}
-        )
+        SELECT p.*,s.`name` s_name,s.`description` s_description
+        FROM product p
+            JOIN `product_collection` pc
+                ON pc.`product_id` = p.`id`
+            JOIN `user` u
+                ON u.`id` = pc.`user_id`
+            LEFT JOIN `shop` s
+                ON s.`id` = p.`shop_id`
+        WHERE u.`id` = #{userId}
     </sql>
     <sql id="delectProductCollection">
         DELETE FROM product_collection
