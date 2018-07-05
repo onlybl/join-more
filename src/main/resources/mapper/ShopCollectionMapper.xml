@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sicaudragon.joinmore.dao.ShopCollectionMapper">
+
+    <insert id="insert" parameterType="com.sicaudragon.joinmore.pojo.DO.ShopCollection">
+        INSERT INTO shop_collection
+                VALUES (#{id},#{userId},#{shopId})
+    </insert>
+
+    <delete id="deleteByUserIdAndShopId">
+        DELETE FROM shop_collection
+        WHERE user_id = #{userId} and shop_id = #{shopId}
+    </delete>
+
+    <select id="getByShopId" resultType="com.sicaudragon.joinmore.pojo.DO.ShopCollection">
+        SELECT *
+        FROM shop_collection
+        WHERE shop_id = #{shopId}
+    </select>
+
+    <select id="getByUserIdAndShopId" resultType="com.sicaudragon.joinmore.pojo.DO.ShopCollection">
+        SELECT *
+        FROM shop_collection
+        WHERE shop_id = #{shopId} and user_id = #{userId}
+    </select>
+    <select id="listShopByUserId" resultType="com.sicaudragon.joinmore.pojo.DTO.ShopDTO">
+        SELECT s.id, s.name, u.username, s.description
+        FROM shop s
+        JOIN shop_collection sc
+        ON s.id = sc.shop_id
+        JOIN user u
+        ON u.id = s.user_id
+        WHERE u.id = #{userId}
+    </select>
+</mapper>

@@ -10,4 +10,10 @@ public class ShopCollection {
     private String userId;
     /** 收藏店铺id .*/
     private String shopId;
+
+    public ShopCollection(String id, String userId, String shopId) {
+        this.id = id;
+        this.userId = userId;
+        this.shopId = shopId;
+    }
 }

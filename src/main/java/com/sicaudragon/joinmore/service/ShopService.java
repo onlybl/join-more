@@ -16,4 +16,25 @@ public interface ShopService {
      * @return
      */
     List<ShopDTO> listShop();
+
+    /**
+     * 收藏店铺
+     * @param userId 用户id
+     * @param shopId 店铺id
+     */
+    void collectShop(String userId,String shopId);
+
+    /**
+     * 取消收藏
+     * @param userId 用户id
+     * @param shopId 店铺id
+     */
+    void cancelCollectShop(String userId, String shopId);
+
+    /**
+     * 根据用户d查询用户收藏的店铺
+     * @param userId 用户id
+     * @return
+     */
+    List<ShopDTO> listShopByUserId(String userId);
 }
