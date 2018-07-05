@@ -11,6 +11,7 @@
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/verificationNumbers.js" tppabs="js/verificationNumbers.js"></script>
     <script src="assets/js/Particleground.js" tppabs="js/Particleground.js"></script>
+    <script src="./assets/js/jquery.cookie.js"></script>
     <script>
         $(document).ready(function() {
             //粒子背景特效
@@ -58,6 +59,8 @@
             data:$("#login").serialize(),
             url:server+"log",
             success:function (data) {
+                $.cookie("userId",data.data.id);
+                $.cookie("username",data.data.username);
                 window.location.href = "index.html";
             }
         })
