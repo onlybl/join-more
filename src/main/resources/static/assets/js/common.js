@@ -1,5 +1,5 @@
 //服务器地址
-var server = 'http://localhost:8080/join-more/';
+var server = '';
 
 /**
  * 用户信息显示
