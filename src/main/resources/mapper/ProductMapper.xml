@@ -13,15 +13,11 @@
         <result column="category_type" property="categoryType"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
-        <association property="shop" javaType="com.sicaudragon.joinmore.pojo.DO.Shop">
-            <id column="s_id" property="id"/>
-            <result column="s_name" property="name"/>
-            <result column="s_description" property="description"/>
-        </association>
+        <result column="s_name" property="shopName"/>
     </resultMap>
 
     <select id="list" resultMap="productDTOMap">
-        SELECT p.*, s.id s_id, s.name s_name, s.description s_description,
+        SELECT p.*, s.name s_name,
             c.name category_type
         FROM product p
         LEFT JOIN shop s

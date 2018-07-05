@@ -17,8 +17,8 @@ import java.util.Date;
 public class ProductDTO {
     /** 商品id .*/
     private String id;
-    /** 所属店铺id .*/
-    private Shop shop;
+    /** 所属店铺名 .*/
+    private String shopName;
     /** 商品名称 .*/
     private String name;
     /** 商品价格 .*/
